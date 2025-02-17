@@ -1,0 +1,6 @@
+name: Shoplugin
+version: '1.0'
+main: com.github.buoyy.shoplugin.Shoplugin
+api-version: '1.18'
+load: POSTWORLD
+softdepend: [Vault]
