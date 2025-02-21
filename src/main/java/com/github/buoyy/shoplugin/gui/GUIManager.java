@@ -35,7 +35,7 @@ public class GUIManager {
             this.unregisterInv(e.getInventory());
         }
     }
-    public void openGUI(InventoryGUI gui, Player player) {
+    public void openGUI(Player player, InventoryGUI gui) {
         this.registerInv(gui.getInv(), gui);
         player.openInventory(gui.getInv());
     }
