@@ -1,9 +1,11 @@
 package com.github.buoyy.shoplugin.gui.impl;
 
+import com.github.buoyy.shoplugin.Shoplugin;
 import com.github.buoyy.shoplugin.gui.InvButton;
 import com.github.buoyy.shoplugin.gui.InventoryGUI;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 
 @SuppressWarnings("deprecation")
@@ -16,10 +18,11 @@ public class BaseGUI extends InventoryGUI {
     @Override
     public void decorate() {
         InvButton generalShop = InvButton.Builder.newBuilder()
-                .setIcon(Material.STONE_PICKAXE)
+                .setIcon(Material.STONE)
                 .setOnClick(e -> {
                     e.setCancelled(true);
-                    e.getWhoClicked().sendMessage("You opened player owned shop.");
+                    Shoplugin.getGuiManager()
+                            .openGUI((Player)e.getWhoClicked(), new GeneralShopGUI());
                 })
                 .setName("General shop")
                 .setLore("The shop where general",

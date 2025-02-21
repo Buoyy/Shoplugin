@@ -1,0 +1,9 @@
+0:
+  item: COBBLESTONE
+  sell: 1
+  cost: 1
+
+1:
+  item: COAL
+  sell: 1
+  cost: 1
