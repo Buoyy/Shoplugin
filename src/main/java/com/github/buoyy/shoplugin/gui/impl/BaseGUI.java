@@ -4,9 +4,7 @@ import com.github.buoyy.shoplugin.gui.InvButton;
 import com.github.buoyy.shoplugin.gui.InventoryGUI;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
 
 @SuppressWarnings("deprecation")
 public class BaseGUI extends InventoryGUI {
@@ -17,20 +15,30 @@ public class BaseGUI extends InventoryGUI {
 
     @Override
     public void decorate() {
-        this.addButton(2, new InvButton(new ItemStack(Material.DIAMOND)) {
-            @Override
-            public void onClick(InventoryClickEvent e) {
-                e.setCancelled(true);
-                e.getWhoClicked().sendMessage("You opened general shop.");
-            }
-        });
-        this.addButton(6, new InvButton(new ItemStack(Material.GOLD_BLOCK)) {
-            @Override
-            public void onClick(InventoryClickEvent e) {
-                e.setCancelled(true);
-                e.getWhoClicked().sendMessage("You opened player owned shop.");
-            }
-        });
+        InvButton generalShop = InvButton.Builder.newBuilder()
+                .setIcon(Material.STONE_PICKAXE)
+                .setOnClick(e -> {
+                    e.setCancelled(true);
+                    e.getWhoClicked().sendMessage("You opened player owned shop.");
+                })
+                .setName("General shop")
+                .setLore("The shop where general",
+                        "items like stone, coal, etc",
+                        "are found.")
+                .build();
+        InvButton playerShop = InvButton.Builder.newBuilder()
+                .setIcon(Material.ENCHANTED_BOOK)
+                .setOnClick(e -> {
+                    e.setCancelled(true);
+                    e.getWhoClicked().sendMessage("You opened player owned shop.");
+                })
+                .setName("Player owned shop")
+                .setLore("These are shops where",
+                        "players choose their own",
+                        "stocks, usually precious stuff.")
+                .build();
+        this.addButton(2, generalShop);
+        this.addButton(6, playerShop);
         super.decorate();
     }
 }
