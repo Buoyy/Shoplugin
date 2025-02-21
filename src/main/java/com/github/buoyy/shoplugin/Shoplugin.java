@@ -1,5 +1,7 @@
 package com.github.buoyy.shoplugin;
 
+import com.github.buoyy.shoplugin.gui.GUIListener;
+import com.github.buoyy.shoplugin.gui.GUIManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -19,6 +21,8 @@ public class Shoplugin extends JavaPlugin {
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
+        GUIManager guiManager = new GUIManager();
+        getServer().getPluginManager().registerEvents(new GUIListener(guiManager), this);
         getLogger().info("Economy loaded successfully with plugin: " + econ.getName());
     }
 
@@ -42,6 +46,6 @@ public class Shoplugin extends JavaPlugin {
         econ = rsp.getProvider();
         return econ != null;
     }
-    
+
     public static Economy getEconomy() { return econ; }
 }
