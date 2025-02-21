@@ -15,6 +15,7 @@ public class Shoplugin extends JavaPlugin {
     private static YAML general;
     @Override
     public void onEnable() {
+saveDefaultConfig();
 instanceObjects(); getServer().getPluginManager().registerEvents(new GUIListener(guiManager), this);      Objects.requireNonNull(getCommand("shop")).setExecutor(new BaseShopCommand());
     }
     private void instanceObjects() {
