@@ -1,8 +1,8 @@
 package com.github.buoyy.shoplugin.gui.impl;
 
 import com.github.buoyy.shoplugin.Shoplugin;
-import com.github.buoyy.shoplugin.gui.InvButton;
-import com.github.buoyy.shoplugin.gui.InventoryGUI;
+import com.github.buoyy.shoplugin.gui.component.InvButton;
+import com.github.buoyy.shoplugin.gui.component.InventoryGUI;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -20,8 +20,8 @@ public class BaseGUI extends InventoryGUI {
         InvButton generalShop = InvButton.Builder.newBuilder()
                 .setIcon(Material.STONE)
                 .setOnClick(e->
-                    Shoplugin.getGuiManager()
-                            .openGUI((Player)e.getWhoClicked(), new GeneralShopGUI())
+                        Shoplugin.getGuiManager()
+                                .openShop((Player)e.getWhoClicked(), new GeneralShop())
                 )
                 .setName("General shop")
                 .setLore("The shop where general",

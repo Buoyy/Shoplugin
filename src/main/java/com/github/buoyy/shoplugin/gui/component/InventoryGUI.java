@@ -1,5 +1,6 @@
-package com.github.buoyy.shoplugin.gui;
+package com.github.buoyy.shoplugin.gui.component;
 
+import com.github.buoyy.shoplugin.gui.InventoryHandler;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;

@@ -13,22 +13,30 @@ public class Shoplugin extends JavaPlugin {
     private static Messenger messenger;
     private static GUIManager guiManager;
     private static YAML general;
+
     @Override
     public void onEnable() {
-saveDefaultConfig();
-instanceObjects(); getServer().getPluginManager().registerEvents(new GUIListener(guiManager), this);      Objects.requireNonNull(getCommand("shop")).setExecutor(new BaseShopCommand());
+        saveDefaultConfig();
+        instanceObjects();
+        messenger.consoleOK("Loaded: "+general.getConfig().getKeys(false).size());
+        getServer().getPluginManager().registerEvents(new GUIListener(guiManager), this);
+        Objects.requireNonNull(getCommand("shop")).setExecutor(new BaseShopCommand());
     }
+
     private void instanceObjects() {
         messenger = new Messenger();
         guiManager = new GUIManager();
         general = new YAML("general");
     }
+
     public static GUIManager getGuiManager() {
         return guiManager;
     }
+
     public static YAML getGeneral() {
         return general;
     }
+
     public static Messenger getMessenger() {
         return messenger;
     }

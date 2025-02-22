@@ -1,6 +1,10 @@
-package com.github.buoyy.shoplugin.gui;
+package com.github.buoyy.shoplugin.gui.component;
 
+import com.github.buoyy.shoplugin.Shoplugin;
+import com.github.buoyy.shoplugin.gui.InventoryHandler;
+import com.github.buoyy.shoplugin.gui.impl.ItemCartGUI;
 import com.github.buoyy.shoplugin.gui.impl.ShopItem;
+import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
@@ -28,6 +32,9 @@ public abstract class ShopGUI implements InventoryHandler {
     @Override
     public void onClick(InventoryClickEvent e) {
         e.setCancelled(true);
+        ShopItem item = this.items.get(e.getSlot());
+        if (item != null)
+            Shoplugin.getGuiManager().openGUI((Player)e.getWhoClicked(), new ItemCartGUI(item));
     }
 
     @Override

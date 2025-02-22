@@ -1,5 +1,7 @@
 package com.github.buoyy.shoplugin.gui;
 
+import com.github.buoyy.shoplugin.gui.component.InventoryGUI;
+import com.github.buoyy.shoplugin.gui.component.ShopGUI;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
@@ -38,5 +40,9 @@ public class GUIManager {
     public void openGUI(Player player, InventoryGUI gui) {
         this.registerInv(gui.getInv(), gui);
         player.openInventory(gui.getInv());
+    }
+    public void openShop(Player player, ShopGUI shop) {
+        this.registerInv(shop.getInv(), shop);
+        player.openInventory(shop.getInv());
     }
 }

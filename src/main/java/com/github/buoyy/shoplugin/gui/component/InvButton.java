@@ -1,4 +1,4 @@
-package com.github.buoyy.shoplugin.gui;
+package com.github.buoyy.shoplugin.gui.component;
 
 import org.bukkit.Material;
 import org.bukkit.event.inventory.InventoryClickEvent;
