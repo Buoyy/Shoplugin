@@ -19,11 +19,10 @@ public class BaseGUI extends InventoryGUI {
     public void decorate() {
         InvButton generalShop = InvButton.Builder.newBuilder()
                 .setIcon(Material.STONE)
-                .setOnClick(e -> {
-                    e.setCancelled(true);
+                .setOnClick(e->
                     Shoplugin.getGuiManager()
-                            .openGUI((Player)e.getWhoClicked(), new GeneralShopGUI());
-                })
+                            .openGUI((Player)e.getWhoClicked(), new GeneralShopGUI())
+                )
                 .setName("General shop")
                 .setLore("The shop where general",
                         "items like stone, coal, etc",
@@ -31,10 +30,8 @@ public class BaseGUI extends InventoryGUI {
                 .build();
         InvButton playerShop = InvButton.Builder.newBuilder()
                 .setIcon(Material.ENCHANTED_BOOK)
-                .setOnClick(e -> {
-                    e.setCancelled(true);
-                    e.getWhoClicked().sendMessage("You opened player owned shop.");
-                })
+                .setOnClick(e->
+                        e.getWhoClicked().sendMessage("You opened player shop"))
                 .setName("Player owned shop")
                 .setLore("These are shops where",
                         "players choose their own",
